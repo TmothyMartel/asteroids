@@ -1,6 +1,7 @@
 # this allows us to use code from
 # the open-source pygame library
 # throughout this file
+import sys
 import pygame
 # Import game constants
 from constants import *
@@ -29,6 +30,11 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+        for obj in asteroids:
+            if obj.collides_with(player):
+                print("Game over!")
+                sys.exit()
+
         for obj in updatable:
             obj.update(dt)
 
